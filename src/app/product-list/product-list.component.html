@@ -1,0 +1,18 @@
+<ul class="products-container">
+  <li *ngFor="let product of products" class="product-container">
+    <a [title]="product.name + ' link'">
+      <div class="img-container" [style]="!product.image_url ? 'min-height: 190px;' : ''">
+        <img *ngIf="product.image_url" [src]="product.image_url" alt="">
+      </div>
+      <div>
+        <h3>{{ product.name }}</h3>
+        <strong>$ {{ product.price}}</strong>
+        <p *ngIf="product.description">{{ product.description }}</p>
+      </div>
+      <div class="btns-container">
+        <button type="button" (click)="share(product)">Share</button>
+        <app-product-alert [product]="product" (notify)="onNotify(product)"></app-product-alert>
+      </div>
+    </a>
+  </li>
+</ul>
