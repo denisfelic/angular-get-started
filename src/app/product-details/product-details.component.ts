@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../cart.service';
 import { Product, products } from '../products';
 
 @Component({
@@ -11,7 +12,10 @@ export class ProductDetailsComponent {
 
   product: Product | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+  ) { }
 
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
@@ -21,8 +25,9 @@ export class ProductDetailsComponent {
     this.product = products.find(prod => prod.id === productIdFromRoute);
   }
 
-  share(product: Product, e: Event) {
-    alert('TODO')
+  addToCart(product: Product) {
+    alert(`The product ${product.name} has been added to your cart`);
+    this.cartService.addToCart(product);
   }
 
   onNotify(product: Product, e: Event) {

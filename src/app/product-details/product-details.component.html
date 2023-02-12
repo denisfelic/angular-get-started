@@ -6,10 +6,10 @@
   <div>
     <h3>{{ product.name }}</h3>
     <strong>{{ product.price | currency}}</strong>
-    <p >{{ product.full_description }}</p>
+    <p>{{ product.full_description }}</p>
   </div>
   <div class="btns-container">
-    <button type="button" (click)="share(product, $event)">Add to cart</button>
+    <button type="button" (click)="addToCart(product)">Buy</button>
     <app-product-alert [product]="product" (notify)="onNotify(product, $event)"></app-product-alert>
   </div>
 </div>

@@ -1,0 +1,24 @@
+<h1>Cart</h1>
+<p>
+  <a routerLink="/shipping">Shipping prices</a>
+</p>
+<div *ngIf="items.length > 0; then thenBlock else elseBlock">
+</div>
+
+<ng-template #thenBlock>
+  <h2>Items:</h2>
+  <ul>
+    <li *ngFor="let item of items">
+      <p>{{ item.name | uppercase}}</p>
+      <span><strong>price</strong> {{ item.price | currency}}</span>
+      <br>
+      <hr>
+    </li>
+  </ul>
+
+
+</ng-template>
+
+<ng-template #elseBlock>
+  <h2>You cart is empty</h2>
+</ng-template>
