@@ -1,0 +1,15 @@
+<h1> Product details</h1>
+<div *ngIf="product">
+  <div class="img-container" [style]="!product.image_url ? 'min-height: 190px;' : ''">
+    <img *ngIf="product.image_url" [src]="product.image_url" alt="">
+  </div>
+  <div>
+    <h3>{{ product.name }}</h3>
+    <strong>{{ product.price | currency}}</strong>
+    <p >{{ product.full_description }}</p>
+  </div>
+  <div class="btns-container">
+    <button type="button" (click)="share(product, $event)">Add to cart</button>
+    <app-product-alert [product]="product" (notify)="onNotify(product, $event)"></app-product-alert>
+  </div>
+</div>

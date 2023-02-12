@@ -11,7 +11,9 @@ export class ProductListComponent {
   products = products;
 
 
-  share(product: Product) {
+  share(product: Product, e : Event) {
+    e.stopPropagation();
+    e.preventDefault();
     alert(`You are sharing the ${product.name}, id ${product.id}`)
   }
 

@@ -13,10 +13,10 @@ export class ProductAlertComponent {
 
   notified = false;
 
-  handleNotify() {
+  handleNotify(event : Event) {
+    event.stopPropagation();
+    event.preventDefault();
     this.notified = true;
-    setTimeout(() => {
-      this.notify.emit();
-    }, 10);
+    this.notify.emit();
   }
 }

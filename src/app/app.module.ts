@@ -7,6 +7,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductAlertComponent } from './product-alert/product-alert.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,13 @@ import { ProductAlertComponent } from './product-alert/product-alert.component';
     TopBarComponent,
     ProductListComponent,
     ProductAlertComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
+      { path: 'product/:productId', component: ProductDetailsComponent}
     ]),
     NoopAnimationsModule,
   ],

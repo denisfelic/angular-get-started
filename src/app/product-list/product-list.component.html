@@ -1,16 +1,18 @@
 <ul class="products-container">
   <li *ngFor="let product of products" class="product-container">
-    <a [title]="product.name + ' link'">
+    <a [title]="product.name + ' link'" [routerLink]="['/product', product.id]">
       <div class="img-container" [style]="!product.image_url ? 'min-height: 190px;' : ''">
         <img *ngIf="product.image_url" [src]="product.image_url" alt="">
       </div>
       <div>
         <h3>{{ product.name }}</h3>
-        <strong>$ {{ product.price}}</strong>
+        <h4>
+          <strong>{{ product.price | currency}}</strong>
+        </h4>
         <p *ngIf="product.description">{{ product.description }}</p>
       </div>
       <div class="btns-container">
-        <button type="button" (click)="share(product)">Share</button>
+        <button type="button" (click)="share(product, $event)">Share</button>
         <app-product-alert [product]="product" (notify)="onNotify(product)"></app-product-alert>
       </div>
     </a>
